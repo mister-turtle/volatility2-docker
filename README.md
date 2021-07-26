@@ -30,7 +30,7 @@ function volatility()
                 arg="$( echo "${arg}" | sed -r 's/-/_/g')"
                 logfile="${logfile}-${arg}"
         done
-        ogdir="${logfile}.log"
+       logdir="${logfile}.log"
         docker run --rm --volume "$(pwd)":"/host" --volume="$(pwd)/dumps":"/dumps:ro" misterturtlesec/volatility $@ | tee -a "$(pwd)/volatility-logs/${logfile}"
 }
 ```
