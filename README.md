@@ -9,7 +9,7 @@ There are two directories specifically for mounting from the host, `/dumps` and 
 ```shell
 function volatility()
 {
-	docker run --rm --volume "$(pwd)":"/host" --volume="$(pwd)/dumps":"/dumps:ro" misterturtlesec/volatility $@
+	docker run --rm --volume "$(pwd)":"/host" --volume="$(pwd)/dumps":"/dumps:ro" misterturtlesec/volatility2 $@
 }
 ```
   
@@ -31,7 +31,7 @@ function volatility()
                 logfile="${logfile}-${arg}"
         done
        logdir="${logfile}.log"
-        docker run --rm --volume "$(pwd)":"/host" --volume="$(pwd)/dumps":"/dumps:ro" misterturtlesec/volatility $@ | tee -a "$(pwd)/volatility-logs/${logfile}"
+        docker run --rm --volume "$(pwd)":"/host" --volume="$(pwd)/dumps":"/dumps:ro" misterturtlesec/volatility2 $@ | tee -a "$(pwd)/volatility-logs/${logfile}"
 }
 ```
   
@@ -39,7 +39,7 @@ function volatility()
 ```shell
 function volatility_shell()
 {
-	docker run --rm --volume "$(pwd)":"/host" --volume="$(pwd)/dumps":"/dumps:ro" --entrypoint=/bin/bash misterturtlesec/volatility
+	docker run --rm --volume "$(pwd)":"/host" --volume="$(pwd)/dumps":"/dumps:ro" --entrypoint=/bin/bash misterturtlesec/volatility2
 }
 ```
 
