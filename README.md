@@ -42,6 +42,11 @@ function volatility_shell()
 	docker run --rm --volume "$(pwd)":"/host" --volume="$(pwd)/dumps":"/dumps:ro" --entrypoint=/bin/bash misterturtlesec/volatility2
 }
 ```
+### Profiles
+If you require additional profiles in the volatility image, you can either customize the Dockerfile to include your custom profile with the below addition, or use `volatility_shell` and copy the profile from the `/host` directory into `/volatility/volatility/plugins/overlay/{os}/` directory.
+```Dockerfile
+ADD ./profile/x /volatility/volatility/plugins/overlay/{os}/x`
+```
 
 ### Building
 The image can be built locally with the following command:
